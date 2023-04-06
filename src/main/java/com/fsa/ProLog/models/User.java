@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Table(name="user")
 @Data
 public class User implements Serializable {
 
@@ -15,15 +16,19 @@ public class User implements Serializable {
     @Column(updatable = false)
     private Integer id;
 
-    private String telephone;
+    private String username;
 
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
-    @JoinColumn(name="client_id")
     private List<FactureColis> facturesColis;
 
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
-    @JoinColumn(name="client_id")
     private List<FactureVehicule> facturesVehicules;
+
+    private String password;
+
+    private String email;
+
+    private String telephone;
 
     private Role role;
 }

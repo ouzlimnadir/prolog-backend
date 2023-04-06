@@ -1,9 +1,6 @@
 package com.fsa.ProLog.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,10 +13,25 @@ public class Colis implements Serializable {
     @Column(updatable = false)
     private Integer id;
     private Integer poids;
+
+    // Volume
     private Integer longueur;
     private Integer largeur;
     private Integer hauteur;
+
+    //
     private Boolean froid;
     private Boolean fragile;
+    @SequenceGenerator(
+            name = "traking_number_seq",
+            sequenceName = "traking_number_seq",
+            initialValue = 25643,
+            allocationSize = 1
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "traking_number_seq")
     private Integer trackingNumber;
+
+    // Les clefs etrangeres
+    @OneToOne(mappedBy ="colis",cascade = CascadeType.ALL)
+    private FactureColis factureColis;
 }

@@ -1,18 +1,20 @@
 package com.fsa.ProLog.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.io.Serializable;
 
 @Entity
 @Data
-public class FactureVehicule {
+public class FactureVehicule implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
 
     @ManyToOne
     private User client;
+
+    @OneToOne
+    private Vehicule vehicule;
 }

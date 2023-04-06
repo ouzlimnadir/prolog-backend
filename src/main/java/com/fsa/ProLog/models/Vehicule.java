@@ -1,16 +1,14 @@
 package com.fsa.ProLog.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Data
-public class Vehicule {
+public class Vehicule implements Serializable {
     @Id
     @GeneratedValue
     @Column(updatable = false)
@@ -21,4 +19,6 @@ public class Vehicule {
     private String marque;
     private Date fin_assurance;
     private Date fin_vignette;
+    @OneToOne(mappedBy ="vehicule",cascade = CascadeType.ALL)
+    private FactureVehicule factureVehicule;
 }
