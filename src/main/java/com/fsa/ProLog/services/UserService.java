@@ -20,4 +20,5 @@ public interface UserService {
 
     // DELETE methods
     void deleteById(Integer id);
+
 }

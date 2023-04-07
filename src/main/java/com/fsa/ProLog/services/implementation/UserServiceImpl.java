@@ -18,6 +18,26 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
     private UserDao userDao;
     private ModelMapper modelMapper;
+
+    // GET methods
+    @Override
+    public List<UserResponseDto> findAll() {
+        return userDao.findAll()
+                .stream().map(el->modelMapper.map(el,UserResponseDto.class))
+                .collect(Collectors.toList());
+    }
+    @Override
+    public UserResponseDto findById(Integer id) {
+        User user = userDao.findById(id).orElseThrow(()-> new RuntimeException("User not found"));
+        return modelMapper.map(user,UserResponseDto.class);
+    }
+    @Override
+    public UserResponseDto findByUsername(String username) {
+        User user = userDao.findByUsername(username);
+        return modelMapper.map(user, UserResponseDto.class);
+    }
+
+    // POST methods
     @Override
     public UserResponseDto save(UserRequestDto userRequestDto) {
         User user = modelMapper.map(userRequestDto,User.class);
@@ -25,17 +45,7 @@ public class UserServiceImpl implements UserService {
         return modelMapper.map(saved,UserResponseDto.class);
     }
 
-    @Override
-    public UserResponseDto findById(Integer id) {
-        User user = userDao.findById(id).orElseThrow(()-> new RuntimeException("User not found"));
-        return modelMapper.map(user,UserResponseDto.class);
-    }
-
-    @Override
-    public void deleteById(Integer id) {
-        userDao.deleteById(id);
-    }
-
+    // PUT methods
     @Override
     public UserResponseDto update(UserRequestDto userRequestDto, Integer id) {
         Optional<User> userOptional = userDao.findById(id);
@@ -49,16 +59,11 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    // DELETE methods
     @Override
-    public List<UserResponseDto> findAll() {
-        return userDao.findAll()
-                .stream().map(el->modelMapper.map(el,UserResponseDto.class))
-                .collect(Collectors.toList());
+    public void deleteById(Integer id) {
+        userDao.deleteById(id);
     }
 
-    @Override
-    public UserResponseDto findByUsername(String username) {
-        User user = userDao.findByUsername(username);
-        return modelMapper.map(user, UserResponseDto.class);
-    }
+
 }

@@ -16,37 +16,43 @@ import java.util.List;
 public class UserController {
     private UserService userService;
 
+    // GET methods
     @GetMapping
     public ResponseEntity<List<UserResponseDto>> getUsers() {
         return ResponseEntity.ok(userService.findAll());
-    }
-    @PostMapping
-    public ResponseEntity<UserResponseDto> save(@RequestBody() UserRequestDto userRequestDto){
-        UserResponseDto userResponseDto = userService.save(userRequestDto);
-        return new ResponseEntity<>(userResponseDto, HttpStatus.CREATED);
     }
     @GetMapping("/id/{id}")
     public ResponseEntity<UserResponseDto> findById(@PathVariable("id") Integer id) {
         UserResponseDto userResponseDto = userService.findById(id);
         return ResponseEntity.ok(userResponseDto);
     }
-
     @GetMapping("/username/{username}")
     public ResponseEntity<UserResponseDto> findByUsername(@PathVariable() String username) {
         UserResponseDto userResponseDto = userService.findByUsername(username);
         return ResponseEntity.ok(userResponseDto);
     }
 
-    @DeleteMapping("/id/{id}")
-    public ResponseEntity<?> delete(@PathVariable() Integer id) {
-        userService.deleteById(id);
-        return ResponseEntity.noContent().build();
+    // POST methods
+    @PostMapping
+    public ResponseEntity<UserResponseDto> save(@RequestBody() UserRequestDto userRequestDto){
+        UserResponseDto userResponseDto = userService.save(userRequestDto);
+        return new ResponseEntity<>(userResponseDto, HttpStatus.CREATED);
     }
 
+    // PUT methods
     @PutMapping("/id/{id}")
     public ResponseEntity<UserResponseDto> update(@RequestBody() UserRequestDto userRequestDto, @PathVariable() Integer id)
             throws RuntimeException {
         UserResponseDto userResponseDto = userService.update(userRequestDto, id);
         return ResponseEntity.accepted().body(userResponseDto);
     }
+
+    // DELETE methods
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<?> delete(@PathVariable() Integer id) {
+        userService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }
