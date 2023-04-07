@@ -22,13 +22,13 @@ public class Colis implements Serializable {
     //
     private Boolean froid;
     private Boolean fragile;
-    @SequenceGenerator(
-            name = "traking_number_seq",
-            sequenceName = "traking_number_seq",
-            initialValue = 25643,
-            allocationSize = 1
-    )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "traking_number_seq")
+//    @SequenceGenerator(
+//            name = "traking_number_seq",
+//            sequenceName = "traking_number_seq",
+//            initialValue = 25643,
+//            allocationSize = 1
+//    )
+    //@GeneratedValue//(strategy = GenerationType.SEQUENCE, generator = "traking_number_seq")
     private Integer trackingNumber;
 
     // Les clefs etrangeres

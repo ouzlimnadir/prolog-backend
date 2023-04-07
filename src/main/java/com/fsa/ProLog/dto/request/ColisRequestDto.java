@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class ColisRequestDto {
-    private Integer poids;
+    private Integer poids; // en gramme
 
-    // Volume
+    // Volume en centimetre cube
     private Integer longueur;
     private Integer largeur;
     private Integer hauteur;
@@ -14,4 +14,6 @@ public class ColisRequestDto {
     //
     private Boolean froid;
     private Boolean fragile;
+
+    private Integer trackingNumber;
 }
