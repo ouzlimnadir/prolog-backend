@@ -20,4 +20,13 @@ public class FactureColis implements Serializable {
 
     @OneToOne
     private Colis colis;
+
+    /* TODO :
+        Gestion des factures Colis
+        Setup controllers
+        Routage dto des repository
+     */
+
+
+
 }

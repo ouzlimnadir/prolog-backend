@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
             User updated = userDao.save(user);
             return modelMapper.map(updated,UserResponseDto.class);
         } else {
-            throw new RuntimeException("ClientNotFound");
+            throw new RuntimeException("UserNotFound");
         }
     }
 

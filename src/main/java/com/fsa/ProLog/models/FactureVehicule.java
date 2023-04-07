@@ -17,4 +17,10 @@ public class FactureVehicule implements Serializable {
 
     @OneToOne
     private Vehicule vehicule;
+
+        /* TODO :
+            Gestion des factures Vehicules
+            Setup controllers
+            Routage dto des repository
+        */
 }

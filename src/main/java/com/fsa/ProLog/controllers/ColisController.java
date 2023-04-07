@@ -1,9 +1,7 @@
 package com.fsa.ProLog.controllers;
 
 import com.fsa.ProLog.dto.request.ColisRequestDto;
-import com.fsa.ProLog.dto.request.UserRequestDto;
 import com.fsa.ProLog.dto.response.ColisResponseDto;
-import com.fsa.ProLog.dto.response.UserResponseDto;
 import com.fsa.ProLog.services.ColisService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
