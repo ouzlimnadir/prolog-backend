@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Entity
 @Data
@@ -17,8 +18,8 @@ public class Vehicule implements Serializable {
     private Integer volume;
     private String immatriculation;
     private String marque;
-    private Date fin_assurance;
-    private Date fin_vignette;
+    private LocalDate fin_assurance;
+    private LocalDate fin_vignette;
     @OneToOne(mappedBy ="vehicule",cascade = CascadeType.ALL)
     private FactureVehicule factureVehicule;
 }
