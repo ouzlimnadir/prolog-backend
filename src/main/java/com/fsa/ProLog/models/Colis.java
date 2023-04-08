@@ -29,6 +29,7 @@ public class Colis implements Serializable {
 //            allocationSize = 1
 //    )
     //@GeneratedValue//(strategy = GenerationType.SEQUENCE, generator = "traking_number_seq")
+    @Column(unique = true)
     private Integer trackingNumber;
 
     // Les clefs etrangeres

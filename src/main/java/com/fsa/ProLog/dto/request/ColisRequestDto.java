@@ -1,8 +1,12 @@
 package com.fsa.ProLog.dto.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ColisRequestDto {
     private Integer poids; // en gramme
 

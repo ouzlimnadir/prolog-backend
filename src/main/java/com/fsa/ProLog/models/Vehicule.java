@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -14,12 +15,13 @@ public class Vehicule implements Serializable {
     @GeneratedValue
     @Column(updatable = false)
     private Integer id;
-    private String type;
+    private VehiculeType type;
     private Integer volume;
     private String immatriculation;
     private String marque;
     private LocalDate fin_assurance;
     private LocalDate fin_vignette;
-    @OneToOne(mappedBy ="vehicule",cascade = CascadeType.ALL)
-    private FactureVehicule factureVehicule;
+
+    @OneToMany(mappedBy ="vehicule",cascade = CascadeType.ALL)
+    private List<FactureVehicule> facturesVehicule;
 }
