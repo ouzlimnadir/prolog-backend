@@ -21,7 +21,7 @@ public class UserController {
     public ResponseEntity<List<UserResponseDto>> getUsers() {
         return ResponseEntity.ok(userService.findAll());
     }
-    @GetMapping("/id/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<UserResponseDto> findById(@PathVariable("id") Integer id) {
         UserResponseDto userResponseDto = userService.findById(id);
         return ResponseEntity.ok(userResponseDto);
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     // PUT methods
-    @PutMapping("/id/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<UserResponseDto> update(@RequestBody() UserRequestDto userRequestDto, @PathVariable() Integer id)
             throws RuntimeException {
         UserResponseDto userResponseDto = userService.update(userRequestDto, id);
@@ -48,7 +48,7 @@ public class UserController {
     }
 
     // DELETE methods
-    @DeleteMapping("/id/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<?> delete(@PathVariable() Integer id) {
         userService.deleteById(id);
         return ResponseEntity.noContent().build();

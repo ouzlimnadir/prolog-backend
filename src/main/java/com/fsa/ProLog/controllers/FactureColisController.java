@@ -21,7 +21,7 @@ public class FactureColisController {
     public ResponseEntity<List<FactureColisResponseDto>> getFacturesColis() {
         return ResponseEntity.ok(factureColisService.findAll());
     }
-    @GetMapping("/id/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<FactureColisResponseDto> findById(@PathVariable("id") Integer id) {
         FactureColisResponseDto factureColisResponseDto = factureColisService.findById(id);
         return ResponseEntity.ok(factureColisResponseDto);
@@ -35,7 +35,7 @@ public class FactureColisController {
     }
 
     // PUT methods
-    @PutMapping("/id/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<FactureColisResponseDto> update(@RequestBody() FactureColisRequestDto factureColisRequestDto, @PathVariable() Integer id)
             throws RuntimeException {
         FactureColisResponseDto factureColisResponseDto = factureColisService.update(factureColisRequestDto, id);
@@ -43,7 +43,7 @@ public class FactureColisController {
     }
 
     // DELETE methods
-    @DeleteMapping("/id/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<?> delete(@PathVariable() Integer id) {
         factureColisService.deleteById(id);
         return ResponseEntity.noContent().build();

@@ -21,7 +21,7 @@ public class FactureVehiculeController {
     public ResponseEntity<List<FactureVehiculeResponseDto>> getFacturesVehicule() {
         return ResponseEntity.ok(factureVehiculeService.findAll());
     }
-    @GetMapping("/id/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<FactureVehiculeResponseDto> findById(@PathVariable("id") Integer id) {
         FactureVehiculeResponseDto factureVehiculeResponseDto = factureVehiculeService.findById(id);
         return ResponseEntity.ok(factureVehiculeResponseDto);
@@ -35,7 +35,7 @@ public class FactureVehiculeController {
     }
 
     // PUT methods
-    @PutMapping("/id/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<FactureVehiculeResponseDto> update(@RequestBody() FactureVehiculeRequestDto factureVehiculeRequestDto, @PathVariable() Integer id)
             throws RuntimeException {
         FactureVehiculeResponseDto factureVehiculeResponseDto = factureVehiculeService.update(factureVehiculeRequestDto, id);
@@ -43,7 +43,7 @@ public class FactureVehiculeController {
     }
 
     // DELETE methods
-    @DeleteMapping("/id/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<?> delete(@PathVariable() Integer id) {
         factureVehiculeService.deleteById(id);
         return ResponseEntity.noContent().build();

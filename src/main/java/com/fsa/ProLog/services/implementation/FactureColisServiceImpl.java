@@ -1,9 +1,12 @@
 package com.fsa.ProLog.services.implementation;
 
+import ch.qos.logback.core.net.server.Client;
 import com.fsa.ProLog.dao.FactureColisDao;
+import com.fsa.ProLog.dao.UserDao;
 import com.fsa.ProLog.dto.request.FactureColisRequestDto;
 import com.fsa.ProLog.dto.response.FactureColisResponseDto;
 import com.fsa.ProLog.models.FactureColis;
+import com.fsa.ProLog.models.User;
 import com.fsa.ProLog.services.FactureColisService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -17,6 +20,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class FactureColisServiceImpl implements FactureColisService {
     private FactureColisDao factureColisDao;
+//    private UserDao userDao;
     private ModelMapper modelMapper;
 
     // GET methods
@@ -36,6 +40,9 @@ public class FactureColisServiceImpl implements FactureColisService {
     @Override
     public FactureColisResponseDto save(FactureColisRequestDto factureColisRequestDto) {
         FactureColis factureColis = modelMapper.map(factureColisRequestDto,FactureColis.class);
+//        Integer idClient = factureColis.getClient().getId();
+//        User client = userDao.findById(idClient).orElseThrow(()-> new RuntimeException("User not found"));
+//        factureColis.setClient(client);
         FactureColis saved = factureColisDao.save(factureColis);
         return modelMapper.map(saved,FactureColisResponseDto.class);
     }

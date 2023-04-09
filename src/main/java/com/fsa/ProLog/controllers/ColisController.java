@@ -21,7 +21,7 @@ public class ColisController {
     public ResponseEntity<List<ColisResponseDto>> getColis(){
         return ResponseEntity.ok(colisService.findAll());
     }
-    @GetMapping("/id/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<ColisResponseDto> findById(@PathVariable("id") Integer id) {
         ColisResponseDto colisResponseDto = colisService.findById(id);
         return ResponseEntity.ok(colisResponseDto);
@@ -40,7 +40,7 @@ public class ColisController {
     }
 
     // PUT methods
-    @PutMapping("/id/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<ColisResponseDto> update(@RequestBody() ColisRequestDto colisRequestDto, @PathVariable() Integer id)
             throws RuntimeException {
         ColisResponseDto colisResponseDto = colisService.update(colisRequestDto, id);
@@ -48,7 +48,7 @@ public class ColisController {
     }
 
     // DELETE methods
-    @DeleteMapping("/id/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<?> delete(@PathVariable() Integer id) {
         colisService.deleteById(id);
         return ResponseEntity.noContent().build();

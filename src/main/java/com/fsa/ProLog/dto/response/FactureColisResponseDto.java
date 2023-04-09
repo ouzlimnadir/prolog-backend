@@ -1,5 +1,7 @@
 package com.fsa.ProLog.dto.response;
 
+import com.fsa.ProLog.models.Colis;
+import com.fsa.ProLog.models.User;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -11,4 +13,7 @@ public class FactureColisResponseDto {
     private String start_point;
     private String arrived_point;
     private LocalDate date;
+
+    private UserResponseDto client;
+    private ColisResponseDto colis;
 }
