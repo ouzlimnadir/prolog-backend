@@ -1,7 +1,9 @@
 package com.fsa.ProLog.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
@@ -10,6 +12,8 @@ import java.util.List;
 @Entity
 @Table(name="user")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements Serializable {
 
     @Id
@@ -29,12 +33,13 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "chauffeur",cascade = CascadeType.ALL)
     private List<FactureVehicule> facturesVehiculesChauffeur;
 
-    @Column(unique = true)
     private String password;
 
+    @Column(unique = true)
     private String email;
 
     private String telephone;
 
+    @Enumerated(EnumType.STRING)
     private Role role;
 }
