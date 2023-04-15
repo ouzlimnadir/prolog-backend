@@ -34,10 +34,14 @@ public class ProLogApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(UserDao userDao, ColisDao colisDao, VehiculeDao vehiculeDao){
 		return args -> {
-			generatingUsers(userDao,Role.ADMIN,2);
-			generatingUsers(userDao,Role.CLIENT,20);
-			generatingUsers(userDao,Role.MANAGER,10);
-			generatingUsers(userDao,Role.DRIVER,10);
+			// Creation de deux utilisateurs pour test ( Admin, Client )
+			superAdmin(userDao);
+			createClient(userDao);
+
+			// Remplissage de la base de donnée pour tester les interactions ( autres utilisateurs, colis, vehicules )
+			generatingUsers(userDao,Role.CLIENT,5);
+			generatingUsers(userDao,Role.MANAGER,5);
+			generatingUsers(userDao,Role.DRIVER,5);
 
 			generatingColis(colisDao,30);
 
@@ -125,6 +129,35 @@ public class ProLogApplication {
 			user = modelMapper.map(userRequestDto, User.class);
 			userDao.save(user);
 		}
+	}
+	private static void superAdmin(UserDao userDao) {
+		ModelMapper modelMapper = new ModelMapper();
+		String username = "admin123";
+		String password = "admin";
+		String email = "admin@prolog.com";
+		String telephone = "+212528280000";
+		Role role = Role.ADMIN;
+		UserRequestDto userRequestDto;
+		User user;
+
+		userRequestDto = new UserRequestDto(username,password,email,telephone,role);
+		user = modelMapper.map(userRequestDto, User.class);
+		userDao.save(user);
+
+	}
+	private static void createClient(UserDao userDao) {
+		ModelMapper modelMapper = new ModelMapper();
+		String username = "nadir.ouzlim";
+		String password = "no2023";
+		String email = "nadir@prolog.com";
+		String telephone = "+212661616161";
+		Role role = Role.CLIENT;
+		UserRequestDto userRequestDto;
+		User user;
+
+		userRequestDto = new UserRequestDto(username,password,email,telephone,role);
+		user = modelMapper.map(userRequestDto, User.class);
+		userDao.save(user);
 	}
 
 }
