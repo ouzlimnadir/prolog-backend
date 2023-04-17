@@ -36,6 +36,11 @@ public class UserServiceImpl implements UserService {
         User user = userDao.findByUsername(username);
         return modelMapper.map(user, UserResponseDto.class);
     }
+    @Override
+    public UserResponseDto findByEmail(String email) {
+        User user = userDao.findByUsername(email);
+        return modelMapper.map(user, UserResponseDto.class);
+    }
 
     // POST methods
     @Override

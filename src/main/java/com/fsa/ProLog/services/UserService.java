@@ -11,6 +11,7 @@ public interface UserService {
     List<UserResponseDto> findAll();
     UserResponseDto findById(Integer id);
     UserResponseDto findByUsername(String username);
+    UserResponseDto findByEmail(String email);
 
     // POST methods
     UserResponseDto save(UserRequestDto userRequestDto);

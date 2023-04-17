@@ -31,6 +31,11 @@ public class UserController {
         UserResponseDto userResponseDto = userService.findByUsername(username);
         return ResponseEntity.ok(userResponseDto);
     }
+    @GetMapping("/email/{email}")
+    public ResponseEntity<UserResponseDto> findByEmail(@PathVariable() String email) {
+        UserResponseDto userResponseDto = userService.findByUsername(email);
+        return ResponseEntity.ok(userResponseDto);
+    }
 
     // POST methods
     @PostMapping

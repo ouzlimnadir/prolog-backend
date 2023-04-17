@@ -14,6 +14,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -34,17 +36,18 @@ public class ProLogApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(UserDao userDao, ColisDao colisDao, VehiculeDao vehiculeDao){
 		return args -> {
-			generatingUsers(userDao,Role.ADMIN,2);
-			generatingUsers(userDao,Role.CLIENT,20);
-			generatingUsers(userDao,Role.MANAGER,10);
-			generatingUsers(userDao,Role.DRIVER,10);
+			//superAdmin(userDao,user);
+//			superAdmin(userDao);
+//			generatingUsers(userDao,Role.CLIENT,20);
+//			generatingUsers(userDao,Role.MANAGER,10);
+//			generatingUsers(userDao,Role.DRIVER,10);
 
-			generatingColis(colisDao,30);
-
-			generatingVehicules(vehiculeDao, VehiculeType.FOURGON,10);
-			generatingVehicules(vehiculeDao, VehiculeType.FRIGOROFIQUE,5);
-			generatingVehicules(vehiculeDao, VehiculeType.PLATEAU,5);
-			generatingVehicules(vehiculeDao, VehiculeType.BENNE,2);
+//			generatingColis(colisDao,30);
+//
+//			generatingVehicules(vehiculeDao, VehiculeType.FOURGON,10);
+//			generatingVehicules(vehiculeDao, VehiculeType.FRIGOROFIQUE,5);
+//			generatingVehicules(vehiculeDao, VehiculeType.PLATEAU,5);
+//			generatingVehicules(vehiculeDao, VehiculeType.BENNE,2);
 
 		};
 	}
@@ -125,6 +128,21 @@ public class ProLogApplication {
 			user = modelMapper.map(userRequestDto, User.class);
 			userDao.save(user);
 		}
+	}
+
+	private static void superAdmin(UserDao userDao) {
+		ModelMapper modelMapper = new ModelMapper();
+		String username = "admin";
+		String password = "admin123";
+		String email = "admin@prolog.com";
+		String telephone = "+212528280010";
+		Role role = Role.ADMIN;
+		UserRequestDto userRequestDto;
+		User user;
+
+		userRequestDto = new UserRequestDto(username,password,email,telephone,role);
+		user = modelMapper.map(userRequestDto, User.class);
+		userDao.save(user);
 	}
 
 }
