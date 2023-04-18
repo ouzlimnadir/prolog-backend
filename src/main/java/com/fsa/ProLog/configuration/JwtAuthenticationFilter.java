@@ -1,6 +1,5 @@
 package com.fsa.ProLog.configuration;
 
-import com.fsa.ProLog.services.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
