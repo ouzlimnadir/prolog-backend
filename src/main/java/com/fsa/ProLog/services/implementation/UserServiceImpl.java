@@ -31,15 +31,19 @@ public class UserServiceImpl implements UserService {
         User user = userDao.findById(id).orElseThrow(()-> new RuntimeException("User not found"));
         return modelMapper.map(user,UserResponseDto.class);
     }
-    @Override
-    public UserResponseDto findByUsername(String username) {
-        User user = userDao.findByUsername(username);
-        return modelMapper.map(user, UserResponseDto.class);
-    }
+//    @Override
+//    public UserResponseDto findByUsername(String username) {
+//        User user = userDao.findByUsername(username);
+//        return modelMapper.map(user, UserResponseDto.class);
+//    }
     @Override
     public UserResponseDto findByEmail(String email) {
-        User user = userDao.findByUsername(email);
-        return modelMapper.map(user, UserResponseDto.class);
+        User user = userDao.findByEmail(email).orElse(null); // Ou user.orElseThrow(NotFoundException::new) pour lancer une exception si l'utilisateur n'est pas trouvé
+        UserResponseDto userResponseDto = null;
+        if (user != null) {
+            userResponseDto = modelMapper.map(user, UserResponseDto.class);
+        }
+        return userResponseDto;
     }
 
     // POST methods

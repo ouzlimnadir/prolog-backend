@@ -7,7 +7,8 @@ import lombok.Data;
 @Data
 public class UserResponseDto {
     private Integer id;
-    private String username;
+    private String fullname;
+//    private String username;
     @JsonIgnore
     private String password;
     private String email;

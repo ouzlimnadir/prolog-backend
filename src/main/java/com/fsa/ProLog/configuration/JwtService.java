@@ -1,5 +1,6 @@
 package com.fsa.ProLog.configuration;
 
+import com.fsa.ProLog.models.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -46,7 +47,7 @@ public class JwtService {
   }
 
   public String generateRefreshToken(
-      UserDetails userDetails
+          UserDetails userDetails
   ) {
     return buildToken(new HashMap<>(), userDetails, refreshExpiration);
   }

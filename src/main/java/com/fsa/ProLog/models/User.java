@@ -23,11 +23,10 @@ public class User implements Serializable, UserDetails {
     @Column(updatable = false)
     private Integer id;
 
-    private String firstname;
-    private String lastname;
+    private String fullname;
 
-    @Column(unique = true)
-    private String username;
+//    @Column(unique = true)
+//    private String username;
 
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL)
     private List<FactureColis> facturesColis;
@@ -51,6 +50,11 @@ public class User implements Serializable, UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
     }
 
     @Override
