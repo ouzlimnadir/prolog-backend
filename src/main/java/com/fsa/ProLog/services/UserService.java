@@ -10,7 +10,8 @@ public interface UserService {
     // GET methods
     List<UserResponseDto> findAll();
     UserResponseDto findById(Integer id);
-    UserResponseDto findByUsername(String username);
+//    UserResponseDto findByUsername(String username);
+    UserResponseDto findByEmail(String email);
 
     // POST methods
     UserResponseDto save(UserRequestDto userRequestDto);

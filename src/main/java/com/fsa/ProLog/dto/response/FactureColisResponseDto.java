@@ -1,7 +1,5 @@
 package com.fsa.ProLog.dto.response;
 
-import com.fsa.ProLog.models.Colis;
-import com.fsa.ProLog.models.User;
 import lombok.Data;
 
 import java.time.LocalDate;

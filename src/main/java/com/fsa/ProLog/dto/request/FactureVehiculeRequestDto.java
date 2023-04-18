@@ -1,6 +1,5 @@
 package com.fsa.ProLog.dto.request;
 
-import com.fsa.ProLog.models.Colis;
 import com.fsa.ProLog.models.User;
 import com.fsa.ProLog.models.Vehicule;
 import lombok.Data;

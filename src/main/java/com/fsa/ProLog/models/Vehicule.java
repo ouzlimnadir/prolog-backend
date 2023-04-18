@@ -15,6 +15,8 @@ public class Vehicule implements Serializable {
     @GeneratedValue
     @Column(updatable = false)
     private Integer id;
+
+    @Enumerated(EnumType.STRING)
     private VehiculeType type;
     private Integer volume;
     private String immatriculation;
