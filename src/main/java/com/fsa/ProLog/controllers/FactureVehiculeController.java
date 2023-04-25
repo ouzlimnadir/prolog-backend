@@ -14,6 +14,8 @@ import java.util.List;
 @RequestMapping("api/v1/factureVehicule")
 @AllArgsConstructor
 public class FactureVehiculeController {
+
+    // TODO get factures by client ID
     private FactureVehiculeService factureVehiculeService;
 
     // GET methods

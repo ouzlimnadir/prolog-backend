@@ -36,78 +36,79 @@ public class ProLogApplication {
 
     @Bean
     CommandLineRunner commandLineRunner(UserDao userDao, ColisDao colisDao, VehiculeDao vehiculeDao) {
+        // TODO facker facture -> colis -> desti
         return args -> {
             superAdmin(userDao);
-            firstClient(userDao);
+            firstClient(userDao);   
 			generatingUsers(userDao,Role.CLIENT,10);
 			generatingUsers(userDao,Role.MANAGER,10);
 			generatingUsers(userDao,Role.DRIVER,10);
 
-			generatingColis(colisDao,30);
-
-			generatingVehicules(vehiculeDao, VehiculeType.FOURGON,10);
-			generatingVehicules(vehiculeDao, VehiculeType.FRIGOROFIQUE,5);
-			generatingVehicules(vehiculeDao, VehiculeType.PLATEAU,5);
-			generatingVehicules(vehiculeDao, VehiculeType.BENNE,2);
+//			generatingColis(colisDao,30);
+//
+//			generatingVehicules(vehiculeDao, VehiculeType.FOURGON,10);
+//			generatingVehicules(vehiculeDao, VehiculeType.FRIGOROFIQUE,5);
+//			generatingVehicules(vehiculeDao, VehiculeType.PLATEAU,5);
+//			generatingVehicules(vehiculeDao, VehiculeType.BENNE,2);
 
         };
     }
 
-        private void generatingVehicules(VehiculeDao vehiculeDao, VehiculeType type, int lignes) {
-        ModelMapper modelMapper = new ModelMapper();
-        VehiculeRequestDto vehiculeRequestDto;
-        Vehicule vehicule;
-        Faker faker = new Faker();
+//        private void generatingVehicules(VehiculeDao vehiculeDao, VehiculeType type, int lignes) {
+//        ModelMapper modelMapper = new ModelMapper();
+//        VehiculeRequestDto vehiculeRequestDto;
+//        Vehicule vehicule;
+//        Faker faker = new Faker();
+//
+//        Integer volume;
+//        String immatriculation;
+//        String marque;
+//        LocalDate fin_assurance;
+//        LocalDate fin_vignette;
+//        String[] lettre = {"A", "B", "C"};
+//
+//        for (int i = 0; i < lignes; i++) {
+//            volume = faker.random().nextInt(10, 50);
+//            immatriculation = faker.random().nextInt(10000, 99999) + lettre[faker.random().nextInt(0, 2)] + faker.random().nextInt(1, 70);
+//            marque = faker.vehicle().model();
+//            fin_assurance = LocalDate.now().plusDays(faker.number().numberBetween(180, 365));
+//            fin_vignette = LocalDate.now().plusDays(faker.number().numberBetween(180, 365));
+//
+//            vehiculeRequestDto = new VehiculeRequestDto(type, volume, immatriculation, marque, fin_assurance, fin_vignette);
+//            vehicule = modelMapper.map(vehiculeRequestDto, Vehicule.class);
+//            vehiculeDao.save(vehicule);
+//        }
+//    }
 
-        Integer volume;
-        String immatriculation;
-        String marque;
-        LocalDate fin_assurance;
-        LocalDate fin_vignette;
-        String[] lettre = {"A", "B", "C"};
-
-        for (int i = 0; i < lignes; i++) {
-            volume = faker.random().nextInt(10, 50);
-            immatriculation = faker.random().nextInt(10000, 99999) + lettre[faker.random().nextInt(0, 2)] + faker.random().nextInt(1, 70);
-            marque = faker.vehicle().model();
-            fin_assurance = LocalDate.now().plusDays(faker.number().numberBetween(180, 365));
-            fin_vignette = LocalDate.now().plusDays(faker.number().numberBetween(180, 365));
-
-            vehiculeRequestDto = new VehiculeRequestDto(type, volume, immatriculation, marque, fin_assurance, fin_vignette);
-            vehicule = modelMapper.map(vehiculeRequestDto, Vehicule.class);
-            vehiculeDao.save(vehicule);
-        }
-    }
-
-    private static void generatingColis(ColisDao colisDao, int lignes) {
-        ModelMapper modelMapper = new ModelMapper();
-        ColisRequestDto colisRequestDto;
-        Colis colis;
-        Faker faker = new Faker();
-        Random rand = new Random();
-        Integer poids;
-        Integer longueur;
-        Integer largeur;
-        Integer hauteur;
-        Boolean froid;
-        Boolean fragile;
-        Integer trackingNumber;
-
-        for (int i = 0; i < lignes; i++) {
-            poids = (rand.nextInt(181) + 20) * 10;
-            longueur = (rand.nextInt(11) + 10) * 10;
-            largeur = (rand.nextInt(11) + 10) * 10;
-            hauteur = (rand.nextInt(11) + 10) * 10;
-            froid = (rand.nextInt(2) % 2) == 0;
-            fragile = (rand.nextInt(2) % 2) == 0;
-            trackingNumber = faker.random().nextInt(25000, 30000);
-
-            colisRequestDto = new ColisRequestDto(poids, largeur, longueur, hauteur, froid, fragile, trackingNumber);
-            colis = modelMapper.map(colisRequestDto, Colis.class);
-            colisDao.save(colis);
-        }
-
-    }
+//    private static void generatingColis(ColisDao colisDao, int lignes) {
+//        ModelMapper modelMapper = new ModelMapper();
+//        ColisRequestDto colisRequestDto;
+//        Colis colis;
+//        Faker faker = new Faker();
+//        Random rand = new Random();
+//        Integer poids;
+//        Integer longueur;
+//        Integer largeur;
+//        Integer hauteur;
+//        Boolean froid;
+//        Boolean fragile;
+//        Integer trackingNumber;
+//
+//        for (int i = 0; i < lignes; i++) {
+//            poids = (rand.nextInt(181) + 20) * 10;
+//            longueur = (rand.nextInt(11) + 10) * 10;
+//            largeur = (rand.nextInt(11) + 10) * 10;
+//            hauteur = (rand.nextInt(11) + 10) * 10;
+//            froid = (rand.nextInt(2) % 2) == 0;
+//            fragile = (rand.nextInt(2) % 2) == 0;
+//            trackingNumber = faker.random().nextInt(25000, 30000);
+//
+//            colisRequestDto = new ColisRequestDto(poids, largeur, longueur, hauteur, froid, fragile, trackingNumber);
+//            colis = modelMapper.map(colisRequestDto, Colis.class);
+//            colisDao.save(colis);
+//        }
+//
+//    }
 
     private static void generatingUsers(UserDao userDao, Role role, Integer lignes) {
         ModelMapper modelMapper = new ModelMapper();

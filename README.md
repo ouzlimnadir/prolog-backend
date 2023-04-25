@@ -6,9 +6,9 @@ des livraisons et des transporteurs. Elle a été développée dans
 le cadre de mon projet de fin d'études en utilisant Spring Boot pour le Backend 
 et React pour le frontend.
 
-Les deux parties du projets sont separées dans deux repositories differents voici leurs liens :
+Les repositories sont divisés en deux parties, leurs liens sont les suivants :
 
-* [ProLog Frontend](https://github.com/abdellahfanidi/)
+* [ProLog Frontend](https://github.com/abdellahfanidi/Frontend-Prolog)
 
 * [ProLog Backend](https://github.com/ouzlimnadir/prolog-backend)
 

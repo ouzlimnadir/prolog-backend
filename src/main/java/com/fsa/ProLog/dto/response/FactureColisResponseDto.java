@@ -8,8 +8,6 @@ import java.time.LocalDate;
 public class FactureColisResponseDto {
     private Integer id;
     private Double prix;
-    private String start_point;
-    private String arrived_point;
     private LocalDate date;
 
     private UserResponseDto client;

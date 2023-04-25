@@ -22,6 +22,8 @@ public class Colis implements Serializable {
     //
     private Boolean froid;
     private Boolean fragile;
+
+    private String adresse;
 //    @SequenceGenerator(
 //            name = "traking_number_seq",
 //            sequenceName = "traking_number_seq",
@@ -29,10 +31,14 @@ public class Colis implements Serializable {
 //            allocationSize = 1
 //    )
     //@GeneratedValue//(strategy = GenerationType.SEQUENCE, generator = "traking_number_seq")
+    // TODO class tracking
     @Column(unique = true)
     private Integer trackingNumber;
 
     // Les clefs etrangeres
     @OneToOne(mappedBy ="colis",cascade = CascadeType.ALL)
     private FactureColis factureColis;
+
+    @OneToOne
+    private Destinataire destinataire;
 }

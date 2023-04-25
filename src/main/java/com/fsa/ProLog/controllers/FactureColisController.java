@@ -16,6 +16,8 @@ import java.util.List;
 public class FactureColisController {
     private FactureColisService factureColisService;
 
+    // TODO get factures by client ID
+
     // GET methods
     @GetMapping
     public ResponseEntity<List<FactureColisResponseDto>> getFacturesColis() {
@@ -25,6 +27,10 @@ public class FactureColisController {
     public ResponseEntity<FactureColisResponseDto> findById(@PathVariable("id") Integer id) {
         FactureColisResponseDto factureColisResponseDto = factureColisService.findById(id);
         return ResponseEntity.ok(factureColisResponseDto);
+    }
+    @GetMapping("/clientId/{id}")
+    public ResponseEntity<List<FactureColisResponseDto>> getFacturesColisByClientId(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(factureColisService.findByClientId(id));
     }
 
     // POST methods

@@ -10,6 +10,8 @@ public interface FactureColisService {
     // GET methods
     List<FactureColisResponseDto> findAll();
     FactureColisResponseDto findById(Integer id);
+
+    List<FactureColisResponseDto> findByClientId(Integer id);
     
     // POST methods
     FactureColisResponseDto save(FactureColisRequestDto factureColisRequestDto);
