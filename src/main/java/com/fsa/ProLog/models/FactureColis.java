@@ -16,8 +16,6 @@ public class FactureColis implements Serializable {
 
 
     private Double prix;
-    private String start_point;
-    private String arrived_point;
     private LocalDate date;
 
     @ManyToOne()

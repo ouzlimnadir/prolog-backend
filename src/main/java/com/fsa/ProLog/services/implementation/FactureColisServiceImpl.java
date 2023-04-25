@@ -32,6 +32,12 @@ public class FactureColisServiceImpl implements FactureColisService {
         FactureColis factureColis = factureColisDao.findById(id).orElseThrow(()-> new RuntimeException("FactureColis not found"));
         return modelMapper.map(factureColis,FactureColisResponseDto.class);
     }
+    @Override
+    public List<FactureColisResponseDto> findByClientId(Integer id){
+        return factureColisDao.findByClientId(id)
+                .stream().map(el->modelMapper.map(el,FactureColisResponseDto.class))
+                .collect(Collectors.toList());
+    }
 
     // POST methods
     @Override
