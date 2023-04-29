@@ -1,9 +1,11 @@
 package com.fsa.ProLog;
 
 import com.fsa.ProLog.dao.ColisDao;
+import com.fsa.ProLog.dao.PointRelaisDao;
 import com.fsa.ProLog.dao.UserDao;
 import com.fsa.ProLog.dao.VehiculeDao;
 import com.fsa.ProLog.dto.request.ColisRequestDto;
+import com.fsa.ProLog.dto.request.PointRelaisRequestDto;
 import com.fsa.ProLog.dto.request.UserRequestDto;
 import com.fsa.ProLog.dto.request.VehiculeRequestDto;
 import com.fsa.ProLog.models.*;
@@ -35,14 +37,16 @@ public class ProLogApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(UserDao userDao, ColisDao colisDao, VehiculeDao vehiculeDao) {
+    CommandLineRunner commandLineRunner(UserDao userDao, ColisDao colisDao, VehiculeDao vehiculeDao, PointRelaisDao pointRelaisDao) {
         // TODO facker facture -> colis -> desti
         return args -> {
             superAdmin(userDao);
-            firstClient(userDao);   
-			generatingUsers(userDao,Role.CLIENT,10);
-			generatingUsers(userDao,Role.MANAGER,10);
-			generatingUsers(userDao,Role.DRIVER,10);
+            firstClient(userDao);
+            generatingUsers(userDao,Role.CLIENT,10);
+            generatingUsers(userDao,Role.MANAGER,10);
+            generatingUsers(userDao,Role.DRIVER,10);
+
+            tousLesPoitsRelais(pointRelaisDao);
 
 //			generatingColis(colisDao,30);
 //
@@ -113,7 +117,7 @@ public class ProLogApplication {
     private static void generatingUsers(UserDao userDao, Role role, Integer lignes) {
         ModelMapper modelMapper = new ModelMapper();
         Faker faker = new Faker();
-		String fullname;
+        String fullname;
         String password;
         String email;
         String telephone;
@@ -165,5 +169,19 @@ public class ProLogApplication {
         userRequestDto = new UserRequestDto("Nadir Ouzlim",password, email, telephone, role);
         user = modelMapper.map(userRequestDto, User.class);
         userDao.save(user);
+    }
+    private static void tousLesPoitsRelais(PointRelaisDao pointRelaisDao) {
+        String[] villes = {"Agadir","Marrakesh","Casablanca","Rabat","Tanger"};
+        String[] adresses = {"cite Dakhla","Derb Assehbi","Boulevard Zerktouni","Rue Chellah","Rue de La Liberte"};
+
+        ModelMapper modelMapper = new ModelMapper();
+        
+        PointRelaisRequestDto pointRelaisRequestDto;
+        PointRelais pointRelais;
+        for(int i=0; i<5; i++) {
+            pointRelaisRequestDto = new PointRelaisRequestDto(villes[i], adresses[i]);
+            pointRelais = modelMapper.map(pointRelaisRequestDto, PointRelais.class);
+            pointRelaisDao.save(pointRelais);
+        }
     }
 }

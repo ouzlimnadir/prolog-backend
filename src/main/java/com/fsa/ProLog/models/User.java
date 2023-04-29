@@ -1,5 +1,6 @@
 package com.fsa.ProLog.models;
 
+import com.fsa.ProLog.token.Token;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -46,6 +47,9 @@ public class User implements Serializable, UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Token> token;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

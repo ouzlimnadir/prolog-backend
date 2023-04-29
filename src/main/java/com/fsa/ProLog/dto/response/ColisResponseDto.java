@@ -1,6 +1,6 @@
 package com.fsa.ProLog.dto.response;
 
-import com.fsa.ProLog.models.Destinataire;
+import com.fsa.ProLog.models.Tracking;
 import lombok.Data;
 
 @Data
@@ -16,7 +16,9 @@ public class ColisResponseDto {
     //
     private Boolean froid;
     private Boolean fragile;
-    private Integer trackingNumber;
+    private Boolean delivered;
+
+    private TrackingResponseDto trackingNumber;
 
     private String adresse;
     private DestinataireResponseDto destinataire;
