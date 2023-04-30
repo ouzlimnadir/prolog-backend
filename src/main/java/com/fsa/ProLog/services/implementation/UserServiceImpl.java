@@ -59,9 +59,24 @@ public class UserServiceImpl implements UserService {
     public UserResponseDto update(UserRequestDto userRequestDto, Integer id) {
         Optional<User> userOptional = userDao.findById(id);
         if(userOptional.isPresent()){
-            User user = modelMapper.map(userRequestDto,User.class);
-            user.setId(id);
-            User updated = userDao.save(user);
+            User userOld = userOptional.orElse(null);
+            User userNew = modelMapper.map(userRequestDto,User.class);
+            if(userNew.getFullname()!=null){
+                userOld.setFullname(userNew.getFullname());
+            }
+            if(userNew.getEmail()!=null){
+                userOld.setEmail(userNew.getEmail());
+            }
+            if(userNew.getTelephone()!=null){
+                userOld.setTelephone(userNew.getTelephone());
+            }
+            if(userNew.getRole()!=null){
+                userOld.setRole(userNew.getRole());
+            }
+            if(userNew.getPassword()!=null){
+                userOld.setPassword(userNew.getPassword());
+            }
+            User updated = userDao.save(userOld);
             return modelMapper.map(updated,UserResponseDto.class);
         } else {
             throw new RuntimeException("UserNotFound");
