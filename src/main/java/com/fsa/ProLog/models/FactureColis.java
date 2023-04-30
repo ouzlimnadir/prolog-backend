@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Data
@@ -16,7 +16,7 @@ public class FactureColis implements Serializable {
 
 
     private Double prix;
-    private LocalDate date;
+    private Date date;
 
     @ManyToOne()
     private User client;

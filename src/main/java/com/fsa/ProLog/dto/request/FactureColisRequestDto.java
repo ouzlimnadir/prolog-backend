@@ -1,17 +1,17 @@
 package com.fsa.ProLog.dto.request;
 
+import com.fsa.ProLog.dto.response.ColisResponseDto;
 import com.fsa.ProLog.models.Colis;
-import com.fsa.ProLog.models.Destinataire;
 import com.fsa.ProLog.models.User;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 public class FactureColisRequestDto {
 
     private Double prix;
-    private LocalDate date;
+    private Date date;
     private User client;
     private Colis colis;
 
