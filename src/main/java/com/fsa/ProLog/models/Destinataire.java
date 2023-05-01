@@ -13,9 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Destinataire implements Serializable {
 
-    // TODO test endpoints
-
-    // TODO (oublié)
+    // TODO Remove Constructor without id
 
     @Id
     @GeneratedValue
@@ -29,4 +27,10 @@ public class Destinataire implements Serializable {
     @OneToOne(mappedBy = "destinataire", cascade = CascadeType.ALL)
     private Colis colis;
 
+    public Destinataire(String firstname, String lastname, String adresse, String telephone) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.adresse = adresse;
+        this.telephone = telephone;
+    }
 }

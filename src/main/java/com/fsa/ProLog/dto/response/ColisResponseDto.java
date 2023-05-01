@@ -16,7 +16,10 @@ public class ColisResponseDto {
     //
     private Boolean froid;
     private Boolean fragile;
+
     private Boolean delivered;
+    private Boolean inContainer;
+
 
     private TrackingResponseDto trackingNumber;
 

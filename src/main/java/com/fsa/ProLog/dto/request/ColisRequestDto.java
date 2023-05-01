@@ -24,6 +24,9 @@ public class ColisRequestDto {
     private Boolean froid;
     private Boolean fragile;
 
+    private Boolean delivered;
+    private Boolean inContainer;
+
     private Tracking trackingNumber;
     private String adresse;
     private Destinataire destinataire;

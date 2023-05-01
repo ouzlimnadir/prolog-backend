@@ -10,7 +10,9 @@ import java.util.List;
 public class ConteneurResponseDto {
 
     private Integer id;
-    private User driver;
-    private List<Colis> packages;
-
+    private String villeDepart;
+    private String villeArrivee;
+    private String ref;
+    private UserResponseDto driver;
+    private List<Colis> colis;
 }

@@ -26,7 +26,10 @@ public class Colis implements Serializable {
     private String adresse;
 
     @Column(columnDefinition = "boolean default false")
-    private Boolean delivered;
+    private Boolean delivered = false;
+
+    @Column(columnDefinition = "boolean default false")
+    private Boolean inContainer = false;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "tracking_number")
@@ -38,4 +41,7 @@ public class Colis implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Destinataire destinataire;
+
+    @ManyToOne
+    private Conteneur conteneur;
 }
