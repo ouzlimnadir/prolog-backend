@@ -19,5 +19,6 @@ public interface ConteneurService {
 
     // DELETE methods
     void deleteById(Integer id);
-    
+
+    ConteneurResponseDto findByRef(String ref);
 }

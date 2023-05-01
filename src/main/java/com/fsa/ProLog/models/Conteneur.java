@@ -17,9 +17,15 @@ public class Conteneur implements Serializable {
     @GeneratedValue
     private Integer id;
 
+    @Column(unique = true)
+    private String ref;
+
+    private String villeDepart;
+    private String villeArrivee;
+
     @OneToOne
     private User driver;
 
-    @OneToMany
-    private List<Colis> packages;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Colis> colis;
 }

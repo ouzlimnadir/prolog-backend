@@ -26,6 +26,11 @@ public class ConteneurController {
         ConteneurResponseDto conteneurResponseDto = conteneurService.findById(id);
         return ResponseEntity.ok(conteneurResponseDto);
     }
+    @GetMapping("/ref/{ref}")
+    public ResponseEntity<ConteneurResponseDto> findById(@PathVariable("ref") String ref) {
+        ConteneurResponseDto conteneurResponseDto = conteneurService.findByRef(ref);
+        return ResponseEntity.ok(conteneurResponseDto);
+    }
 
     // POST methods
     @PostMapping

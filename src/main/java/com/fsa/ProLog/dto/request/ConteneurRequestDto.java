@@ -13,7 +13,10 @@ import java.util.List;
 @NoArgsConstructor
 public class ConteneurRequestDto {
 
+    private String ref;
+    private String villeDepart;
+    private String villeArrivee;
     private User driver;
-    private List<Colis> packages;
+    private List<Colis> colis;
 
 }

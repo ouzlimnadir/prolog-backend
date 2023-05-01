@@ -31,6 +31,11 @@ public class ConteneurServiceImpl implements ConteneurService {
         Conteneur conteneur = conteneurDao.findById(id).orElseThrow(()-> new RuntimeException("User not found"));
         return modelMapper.map(conteneur,ConteneurResponseDto.class);
     }
+    @Override
+    public ConteneurResponseDto findByRef(String ref) {
+        Conteneur conteneur = conteneurDao.findByRef(ref).orElseThrow(()-> new RuntimeException("User not found"));
+        return modelMapper.map(conteneur,ConteneurResponseDto.class);
+    }
 
     // POST methods
     @Override
