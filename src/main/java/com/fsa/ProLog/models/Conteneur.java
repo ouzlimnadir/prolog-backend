@@ -23,9 +23,9 @@ public class Conteneur implements Serializable {
     private String villeDepart;
     private String villeArrivee;
 
-    @OneToOne
+    @ManyToOne
     private User driver;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "conteneur", cascade = CascadeType.ALL)
     private List<Colis> colis;
 }

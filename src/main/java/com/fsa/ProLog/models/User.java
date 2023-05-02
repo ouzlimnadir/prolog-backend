@@ -48,6 +48,9 @@ public class User implements Serializable, UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany
+    private List<Conteneur> conteneur;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Token> token;
 

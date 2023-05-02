@@ -42,6 +42,7 @@ public class Colis implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     private Destinataire destinataire;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "conteneur_id")
     private Conteneur conteneur;
 }

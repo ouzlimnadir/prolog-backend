@@ -1,7 +1,5 @@
 package com.fsa.ProLog.dto.response;
 
-import com.fsa.ProLog.models.Colis;
-import com.fsa.ProLog.models.User;
 import lombok.Data;
 
 import java.util.List;
@@ -14,5 +12,5 @@ public class ConteneurResponseDto {
     private String villeArrivee;
     private String ref;
     private UserResponseDto driver;
-    private List<Colis> colis;
+    private List<ColisResponseDto> colis;
 }
