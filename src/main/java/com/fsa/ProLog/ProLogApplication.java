@@ -158,9 +158,9 @@ public class ProLogApplication {
         for (int i = 0; i < lignes; i++) {
             // Creation du colis
             poids = (rand.nextInt(181) + 20) * 10;
-            longueur = (rand.nextInt(11) + 10) * 10;
-            largeur = (rand.nextInt(11) + 10) * 10;
-            hauteur = (rand.nextInt(11) + 10) * 10;
+            longueur = (rand.nextInt(11) + 10) * 5;
+            largeur = (rand.nextInt(11) + 10) * 5;
+            hauteur = (rand.nextInt(11) + 10) * 5;
             froid = (rand.nextInt(2) % 2) == 0;
             fragile = (rand.nextInt(2) % 2) == 0;
             adresse = faker.address().fullAddress();
@@ -182,7 +182,9 @@ public class ProLogApplication {
             destinataire = new Destinataire(firstname,lastname,adresseD,telephone);
 
             // Creation facture
-            prix = poids*hauteur*largeur*longueur*0.2/10000;
+            prix = (((double) poids /10)+ (double) (hauteur * largeur * longueur * 2) /1000000)*(froid?1.3:1)*(fragile?1.2:1);
+            prix = Math.round(prix * 100.0) / 100.0;
+
             date = new Date();
             
             // Save colis

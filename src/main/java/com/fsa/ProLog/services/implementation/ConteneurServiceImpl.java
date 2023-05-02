@@ -77,6 +77,9 @@ public class ConteneurServiceImpl implements ConteneurService {
                 conteneur.setVilleArrivee(conteneurRequestDto.getVilleArrivee());
             if(conteneurRequestDto.getDriver()!=null)
                 conteneur.setDriver(conteneurRequestDto.getDriver());
+            if(conteneurRequestDto.getFin()!=null){
+                conteneur.setFin(conteneurRequestDto.getFin());
+            }
             if(conteneurRequestDto.getColis().size()>0){
                 List<Colis> colisList = new ArrayList<>();
                 for(int i=0; i<conteneurRequestDto.getColis().size(); i++){

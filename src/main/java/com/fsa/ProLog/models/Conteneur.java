@@ -23,6 +23,8 @@ public class Conteneur implements Serializable {
     private String villeDepart;
     private String villeArrivee;
 
+    private Boolean fin;
+
     @ManyToOne
     private User driver;
 

@@ -16,6 +16,7 @@ public class ConteneurRequestDto {
     private String ref;
     private String villeDepart;
     private String villeArrivee;
+    private Boolean fin;
     private User driver;
     private List<Colis> colis;
 
