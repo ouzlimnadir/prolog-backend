@@ -52,7 +52,7 @@ public class ProLogApplication {
                 generateFakers(userDao,Role.CLIENT,10);
 
                 // Creation des elements : Colis & Destinataire
-                generatingColis(colisDao,factureColisDao,userDao,10);
+                generatingColis(colisDao,factureColisDao,userDao,30);
             }
 
 
@@ -76,6 +76,9 @@ public class ProLogApplication {
         userFaker.creatUser("premier chauffeur","driver@prolog.com","driver","06 12 34 56 78",Role.DRIVER);
         userFaker.creatUser("Nadir Ouzlim","nadir@prolog.com","prolog2023","06 12 34 56 78",Role.CLIENT);
         userFaker.creatUser("Abdellah Fanidi","abdo@prolog.com","prolog2022","06 12 34 56 78",Role.CLIENT);
+        userFaker.creatUser("second gerant","manager2@prolog.com","manager","06 12 34 56 78",Role.MANAGER);
+        userFaker.creatUser("deuxieme chauffeur","driver2@prolog.com","driver","06 12 34 56 78",Role.DRIVER);
+
     }
     private void generateFakers(UserDao userDao, Role role, int lignes) {
         UserFaker userFaker = new UserFaker(userDao);
