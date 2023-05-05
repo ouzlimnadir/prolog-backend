@@ -191,7 +191,7 @@ public class ProLogApplication {
             date = new Date();
             
             // Save colis
-            colisRequestDto = new ColisRequestDto(poids, largeur, longueur, hauteur, froid, fragile,false,false, trackingNumber,adresse, destinataire);
+            colisRequestDto = new ColisRequestDto(poids, largeur, longueur, hauteur, froid, fragile,false,false,false, trackingNumber,adresse, destinataire);
             colis = modelMapper.map(colisRequestDto, Colis.class);
             saved = colisDao.save(colis);
 

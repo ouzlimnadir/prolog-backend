@@ -26,6 +26,9 @@ public class Colis implements Serializable {
     private String adresse;
 
     @Column(columnDefinition = "boolean default false")
+    private Boolean recup = false;
+
+    @Column(columnDefinition = "boolean default false")
     private Boolean delivered = false;
 
     @Column(columnDefinition = "boolean default false")

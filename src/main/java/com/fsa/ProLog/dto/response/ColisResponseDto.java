@@ -17,6 +17,7 @@ public class ColisResponseDto {
     private Boolean froid;
     private Boolean fragile;
 
+    private Boolean recup;
     private Boolean delivered;
     private Boolean inContainer;
 
