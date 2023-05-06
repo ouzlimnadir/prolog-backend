@@ -31,7 +31,4 @@ public class ColisRequestDto {
     private Tracking trackingNumber;
     private String adresse;
     private Destinataire destinataire;
-
-
-
 }
