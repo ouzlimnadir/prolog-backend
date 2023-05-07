@@ -38,6 +38,11 @@ public class FactureColisServiceImpl implements FactureColisService {
                 .stream().map(el->modelMapper.map(el,FactureColisResponseDto.class))
                 .collect(Collectors.toList());
     }
+    @Override
+    public FactureColisResponseDto findByColisTrackingNumberTrackingNumber(String trackingNumber) {
+        FactureColis factureColis = factureColisDao.findByColisTrackingNumberTrackingNumber(trackingNumber).orElseThrow(()-> new RuntimeException("FactureColis not found"));
+        return modelMapper.map(factureColis,FactureColisResponseDto.class);
+    }
 
     // POST methods
     @Override

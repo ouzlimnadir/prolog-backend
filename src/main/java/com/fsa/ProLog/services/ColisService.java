@@ -9,7 +9,7 @@ public interface ColisService {
     // GET methods
     List<ColisResponseDto> findAll();
     ColisResponseDto findById(Integer id);
-    ColisResponseDto findByTrackingNumber(Integer trackingNumber);
+    ColisResponseDto findByTrackingNumber(String trackingNumber);
 
     // POST methods
     ColisResponseDto save(ColisRequestDto colisRequestDto);

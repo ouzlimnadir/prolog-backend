@@ -33,6 +33,11 @@ public class FactureColisController {
         return ResponseEntity.ok(factureColisService.findByClientId(id));
     }
 
+    @GetMapping("/trackingNumber/{trackingNumber}")
+    public ResponseEntity<FactureColisResponseDto> findByColisTrackingNumberTrackingNumber(@PathVariable() String trackingNumber) {
+        FactureColisResponseDto factureColisResponseDto = factureColisService.findByColisTrackingNumberTrackingNumber(trackingNumber);
+        return ResponseEntity.ok(factureColisResponseDto);
+    }
     // POST methods
     @PostMapping
     public ResponseEntity<FactureColisResponseDto> save(@RequestBody() FactureColisRequestDto factureColisRequestDto){

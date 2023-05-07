@@ -27,7 +27,7 @@ public class ColisController {
         return ResponseEntity.ok(colisResponseDto);
     }
     @GetMapping("/trackingNumber/{trackingNumber}")
-    public ResponseEntity<ColisResponseDto> findByTrackingNumber(@PathVariable() Integer trackingNumber) {
+    public ResponseEntity<ColisResponseDto> findByTrackingNumber(@PathVariable() String trackingNumber) {
         ColisResponseDto colisResponseDto = colisService.findByTrackingNumber(trackingNumber);
         return ResponseEntity.ok(colisResponseDto);
     }

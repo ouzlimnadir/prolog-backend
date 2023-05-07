@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ColisDao extends JpaRepository<Colis,Integer> {
-    Colis findByTrackingNumber(Integer trackingNumber);
+    Colis findByTrackingNumberTrackingNumber(String trackingNumber);
 }

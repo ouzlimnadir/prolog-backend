@@ -7,6 +7,7 @@ import com.fsa.ProLog.dto.response.ColisResponseDto;
 import com.fsa.ProLog.dto.response.ConteneurResponseDto;
 import com.fsa.ProLog.models.Colis;
 import com.fsa.ProLog.models.Conteneur;
+import com.fsa.ProLog.models.Tracking;
 import com.fsa.ProLog.services.ColisService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -36,8 +37,8 @@ public class ColisServiceImpl implements ColisService {
         return modelMapper.map(colis,ColisResponseDto.class);
     }
     @Override
-    public ColisResponseDto findByTrackingNumber(Integer trackingNumber) {
-        Colis colis = colisDao.findByTrackingNumber(trackingNumber);
+    public ColisResponseDto findByTrackingNumber(String trackingNumber) {
+        Colis colis = colisDao.findByTrackingNumberTrackingNumber(trackingNumber);
         return modelMapper.map(colis, ColisResponseDto.class);
     }
 

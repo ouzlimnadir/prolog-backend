@@ -11,6 +11,8 @@ public interface FactureColisService {
     List<FactureColisResponseDto> findAll();
     FactureColisResponseDto findById(Integer id);
 
+    FactureColisResponseDto findByColisTrackingNumberTrackingNumber(String trackingNumber);
+
     List<FactureColisResponseDto> findByClientId(Integer id);
     
     // POST methods
@@ -21,5 +23,4 @@ public interface FactureColisService {
 
     // DELETE methods
     void deleteById(Integer id);
-
 }

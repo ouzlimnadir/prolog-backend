@@ -53,6 +53,7 @@ public class ProLogApplication {
 
                 // Creation des elements : Colis & Destinataire
                 generatingColis(colisDao,factureColisDao,userDao,30);
+                generatingColis2(colisDao,factureColisDao,userDao,10);
             }
 
 
@@ -202,6 +203,85 @@ public class ProLogApplication {
         }
 
     }
+    private static void generatingColis2(ColisDao colisDao, FactureColisDao factureColisDao, UserDao userDao,int lignes) {
+        // Client qui aura la liste des colis
+        User user = userDao.findById(5)
+                .orElse(null);
+
+        ModelMapper modelMapper = new ModelMapper();
+        ColisRequestDto colisRequestDto;
+        Colis colis;
+        Colis saved;
+        Faker faker = new Faker();
+        Random rand = new Random();
+        int poids;
+        int longueur;
+        int largeur;
+        int hauteur;
+        boolean froid;
+        boolean fragile;
+        String adresse;
+
+        Tracking trackingNumber = new Tracking();
+        final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder builder = new StringBuilder();
+
+        Destinataire destinataire;
+        String firstname;
+        String lastname;
+        String adresseD;
+        String telephone;
+
+        FactureColisRequestDto factureColisRequestDto;
+        FactureColis factureColis;
+        double prix;
+        Date date;
+
+        for (int i = 0; i < lignes; i++) {
+            // Creation du colis
+            poids = (rand.nextInt(181) + 20) * 10;
+            longueur = (rand.nextInt(11) + 10) * 5;
+            largeur = (rand.nextInt(11) + 10) * 5;
+            hauteur = (rand.nextInt(11) + 10) * 5;
+            froid = (rand.nextInt(2) % 2) == 0;
+            fragile = (rand.nextInt(2) % 2) == 0;
+            adresse = faker.address().fullAddress();
+
+            // Creation de son Tracking
+            for (int j = 0; j < 15; j++) {
+                int index = rand.nextInt(ALPHA_NUMERIC_STRING.length());
+                char randomChar = ALPHA_NUMERIC_STRING.charAt(index);
+                builder.append(randomChar);
+            }
+            trackingNumber.setTrackingNumber(builder.toString());
+            builder.delete(0, builder.length());
+
+            // Creation de son destinataire
+            firstname = faker.name().firstName();
+            lastname = faker.name().lastName();
+            telephone = faker.phoneNumber().phoneNumber();
+            adresseD = faker.address().fullAddress();
+            destinataire = new Destinataire(firstname,lastname,adresseD,telephone);
+
+            // Creation facture
+            prix = (((double) poids /10)+ (double) (hauteur * largeur * longueur * 2) /1000000)*(froid?1.3:1)*(fragile?1.2:1);
+            prix = Math.round(prix * 100.0) / 100.0;
+
+            date = new Date();
+
+            // Save colis
+            colisRequestDto = new ColisRequestDto(poids, largeur, longueur, hauteur, froid, fragile,false,false,false, trackingNumber,adresse, destinataire);
+            colis = modelMapper.map(colisRequestDto, Colis.class);
+            saved = colisDao.save(colis);
+
+            // Save facture Colis
+            factureColisRequestDto = new FactureColisRequestDto(prix, date, user, saved);
+            factureColis = modelMapper.map(factureColisRequestDto, FactureColis.class);
+            factureColisDao.save(factureColis);
+        }
+
+    }
+
 
     private static void tousLesPoitsRelais(PointRelaisDao pointRelaisDao) {
         String[] villes = {"Agadir","Marrakesh","Casablanca","Rabat","Tanger"};
