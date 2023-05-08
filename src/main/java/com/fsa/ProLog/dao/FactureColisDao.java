@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface FactureColisDao extends JpaRepository<FactureColis,Integer> {
-    List<FactureColis> findByClientId(Integer id);
+    List<FactureColis> findByClientIdOrderByIdDesc(Integer id);
 
     Optional<FactureColis> findByColisTrackingNumberTrackingNumber(String trackingNumber);
 }

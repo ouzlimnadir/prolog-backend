@@ -33,8 +33,8 @@ public class FactureColisServiceImpl implements FactureColisService {
         return modelMapper.map(factureColis,FactureColisResponseDto.class);
     }
     @Override
-    public List<FactureColisResponseDto> findByClientId(Integer id){
-        return factureColisDao.findByClientId(id)
+    public List<FactureColisResponseDto> findByClientIdOrderByIdDesc(Integer id){
+        return factureColisDao.findByClientIdOrderByIdDesc(id)
                 .stream().map(el->modelMapper.map(el,FactureColisResponseDto.class))
                 .collect(Collectors.toList());
     }

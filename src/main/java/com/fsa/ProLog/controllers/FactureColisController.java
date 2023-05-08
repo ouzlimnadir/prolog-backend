@@ -30,7 +30,7 @@ public class FactureColisController {
     }
     @GetMapping("/clientId/{id}")
     public ResponseEntity<List<FactureColisResponseDto>> getFacturesColisByClientId(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(factureColisService.findByClientId(id));
+        return ResponseEntity.ok(factureColisService.findByClientIdOrderByIdDesc(id));
     }
 
     @GetMapping("/trackingNumber/{trackingNumber}")

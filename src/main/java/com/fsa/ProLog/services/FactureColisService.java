@@ -13,7 +13,7 @@ public interface FactureColisService {
 
     FactureColisResponseDto findByColisTrackingNumberTrackingNumber(String trackingNumber);
 
-    List<FactureColisResponseDto> findByClientId(Integer id);
+    List<FactureColisResponseDto> findByClientIdOrderByIdDesc(Integer id);
     
     // POST methods
     FactureColisResponseDto save(FactureColisRequestDto factureColisRequestDto);
