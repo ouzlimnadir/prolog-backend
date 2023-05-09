@@ -8,7 +8,7 @@ et React pour le frontend.
 
 Les repositories sont divisés en deux parties, leurs liens sont les suivants :
 
-* [ProLog Frontend](https://github.com/abdellahfanidi/Frontend-Prolog)
+* [ProLog Frontend](https://github.com/abdellahfanidi/Prolog-Frontend)
 
 * [ProLog Backend](https://github.com/ouzlimnadir/prolog-backend)
 
