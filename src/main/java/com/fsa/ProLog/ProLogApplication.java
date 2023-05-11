@@ -53,7 +53,6 @@ public class ProLogApplication {
 
                 // Creation des elements : Colis & Destinataire
                 generatingColis(colisDao,factureColisDao,userDao,30);
-                generatingColis2(colisDao,factureColisDao,userDao,10);
             }
 
 
