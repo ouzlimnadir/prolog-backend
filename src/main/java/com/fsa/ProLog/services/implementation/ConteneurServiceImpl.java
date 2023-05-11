@@ -66,7 +66,7 @@ public class ConteneurServiceImpl implements ConteneurService {
     public ConteneurResponseDto update(ConteneurRequestDto conteneurRequestDto, Integer id) {
         Optional<Conteneur> conteneurOptional = conteneurDao.findById(id);
         if(conteneurOptional.isPresent()){
-            Conteneur conteneur = conteneurOptional.get();
+            Conteneur conteneur = conteneurDao.findById(id).orElseThrow(null);
 
             // Ajout des elements
             if(conteneurRequestDto.getRef()!=null)
@@ -80,7 +80,7 @@ public class ConteneurServiceImpl implements ConteneurService {
             if(conteneurRequestDto.getFin()!=null){
                 conteneur.setFin(conteneurRequestDto.getFin());
             }
-            if(conteneurRequestDto.getColis().size()>0){
+            if (conteneurRequestDto.getColis() != null && conteneurRequestDto.getColis().size() > 0){
                 List<Colis> colisList = new ArrayList<>();
                 for(int i=0; i<conteneurRequestDto.getColis().size(); i++){
                     Optional<Colis> colisOptional = colisDao.findById(conteneurRequestDto.getColis().get(i).getId());
@@ -99,7 +99,7 @@ public class ConteneurServiceImpl implements ConteneurService {
             Conteneur updated = conteneurDao.save(conteneur);
             return modelMapper.map(updated, ConteneurResponseDto.class);
         } else {
-            throw new RuntimeException("ClientNotFound");
+            throw new RuntimeException("ConteneurNotFound");
         }
     }
 

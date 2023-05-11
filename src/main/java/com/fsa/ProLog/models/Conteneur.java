@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Data
+@ToString(exclude = "colis")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Conteneur implements Serializable {
