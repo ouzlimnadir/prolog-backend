@@ -72,18 +72,16 @@ public class ProLogApplication {
     private void generateUsers(UserDao userDao) {
         // Données Importants
         UserFaker userFaker = new UserFaker(userDao);
-        userFaker.creatUser("super admin","admin@prolog.com","admin123","911",Role.ADMIN);
-        userFaker.creatUser("mon gerant","manager@prolog.com","manager","06 12 34 56 78",Role.MANAGER);
-        userFaker.creatUser("premier chauffeur","driver@prolog.com","driver","06 12 34 56 78",Role.DRIVER);
-        userFaker.creatUser("Nadir Ouzlim","nadir@prolog.com","prolog2023","06 12 34 56 78",Role.CLIENT);
-        userFaker.creatUser("Abdellah Fanidi","abdo@prolog.com","prolog2022","06 12 34 56 78",Role.CLIENT);
-        userFaker.creatUser("second gerant","manager2@prolog.com","manager","06 12 34 56 78",Role.MANAGER);
-        userFaker.creatUser("deuxieme chauffeur","driver2@prolog.com","driver","06 12 34 56 78",Role.DRIVER);
-
+        userFaker.creatUser("Admin","admin@prolog.com","admin123","911",Role.ADMIN);
+        userFaker.creatUser("Said Charfi","charfi@prolog.com","charfi","06 12 34 56 78",Role.MANAGER);
+        userFaker.creatUser("Abdellah Fanidi","abdo@prolog.com","abdo","06 12 34 56 78",Role.DRIVER);
+        userFaker.creatUser("Nadir Ouzlim","nadir@prolog.com","pfe2023","06 12 34 56 78",Role.CLIENT);
     }
     private void generateFakers(UserDao userDao, Role role, int lignes) {
         UserFaker userFaker = new UserFaker(userDao);
         Faker faker = new Faker();
+        Random rand = new Random();
+        int randomDigits = rand.nextInt(100000000);
         String fullname;
         String password;
         String email;
@@ -93,7 +91,7 @@ public class ProLogApplication {
             fullname = faker.name().fullName();
             password = faker.internet().password(9, 10);
             email = faker.internet().emailAddress();
-            telephone = faker.phoneNumber().phoneNumber();
+            telephone = "+2126" + String.format("%08d", randomDigits);
 
             userFaker.creatUser(fullname,email,password,telephone,role);
         }
@@ -136,6 +134,7 @@ public class ProLogApplication {
         Colis saved;
         Faker faker = new Faker();
         Random rand = new Random();
+        int randomDigits = rand.nextInt(100000000);
         int poids;
         int longueur;
         int largeur;
@@ -181,7 +180,7 @@ public class ProLogApplication {
             // Creation de son destinataire
             firstname = faker.name().firstName();
             lastname = faker.name().lastName();
-            telephone = faker.phoneNumber().phoneNumber();
+            telephone = "+2126" + String.format("%08d", randomDigits);
             adresseD = faker.address().fullAddress();
             destinataire = new Destinataire(firstname,lastname,adresseD,telephone);
 
@@ -214,6 +213,7 @@ public class ProLogApplication {
         Colis saved;
         Faker faker = new Faker();
         Random rand = new Random();
+        int randomDigits = rand.nextInt(100000000);
         int poids;
         int longueur;
         int largeur;
@@ -259,7 +259,7 @@ public class ProLogApplication {
             // Creation de son destinataire
             firstname = faker.name().firstName();
             lastname = faker.name().lastName();
-            telephone = faker.phoneNumber().phoneNumber();
+            telephone = "+2126" + String.format("%08d", randomDigits);
             adresseD = faker.address().fullAddress();
             destinataire = new Destinataire(firstname,lastname,adresseD,telephone);
 
